@@ -3,6 +3,11 @@ watch_config: true
 debug: false
 update_check: true
 
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic stop --whkd && komorebic start --whkd"
+
 bars:
   # Primary bar - ZOWIE XL LCD (monitor 0)
   primary-bar:
@@ -16,28 +21,26 @@ bars:
       enabled: true
       duration: 400
     blur_effect:
-      enabled: true
+      enabled: false
       dark_mode: false
       round_corners: false
-      round_corners_type: "normal"
-      border_color: "system"
+      border_color: None
     window_flags:
       always_on_top: false
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 32
+      height: 34
     padding:
-      top: 0
-      left: 0
-      bottom: 0
-      right: 0
+      top: 8
+      left: 8
+      bottom: 4
+      right: 8
     widgets:
       left:
         - "home"
         - "komorebi_workspaces"
         - "komorebi_layout"
-        - "taskbar"
       center:
         - "clock"
       right:
@@ -63,27 +66,25 @@ bars:
       enabled: true
       duration: 400
     blur_effect:
-      enabled: true
+      enabled: false
       dark_mode: false
       round_corners: false
-      round_corners_type: "normal"
-      border_color: "system"
+      border_color: None
     window_flags:
       always_on_top: false
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 32
+      height: 34
     padding:
-      top: 0
-      left: 0
-      bottom: 0
-      right: 0
+      top: 8
+      left: 8
+      bottom: 4
+      right: 8
     widgets:
       left:
         - "home"
         - "komorebi_layout"
-        - "taskbar"
       center:
         - "clock"
       right:
@@ -109,27 +110,25 @@ bars:
       enabled: true
       duration: 400
     blur_effect:
-      enabled: true
+      enabled: false
       dark_mode: false
       round_corners: false
-      round_corners_type: "normal"
-      border_color: "system"
+      border_color: None
     window_flags:
       always_on_top: false
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 32
+      height: 34
     padding:
-      top: 0
-      left: 0
-      bottom: 0
-      right: 0
+      top: 8
+      left: 8
+      bottom: 4
+      right: 8
     widgets:
       left:
         - "home"
         - "komorebi_layout"
-        - "taskbar"
       center:
         - "clock"
       right:
@@ -147,7 +146,7 @@ widgets:
   home:
     type: "yasb.home.HomeWidget"
     options:
-      label: "<span>\ue700</span>"
+      label: "<span>\uf40e</span>"
       menu_list:
         - { title: "User Home", path: "~" }
         - { title: "Downloads", path: "~\\Downloads" }
@@ -164,10 +163,11 @@ widgets:
   komorebi_workspaces:
     type: "komorebi.workspaces.WorkspaceWidget"
     options:
-      label_offline: "Komorebi offline"
-      label_workspace_btn: "{index}"
-      label_workspace_active_btn: "{index}"
-      label_workspace_populated_btn: "{index}"
+      label_offline: "Komorebi Offline"
+      label_workspace_btn: "\udb85\udcfc"
+      label_workspace_active_btn: "\udb85\udcfb"
+      label_default_name: "{index}"
+      label_zero_index: false
       hide_empty_workspaces: true
       hide_if_offline: true
 
@@ -178,69 +178,33 @@ widgets:
       label: "{icon}"
       layouts:
         - "bsp"
+        - "columns"
         - "vertical_stack"
         - "horizontal_stack"
         - "grid"
       layout_icons:
-        bsp: "\uebeb"
-        vertical_stack: "\uebee"
-        horizontal_stack: "\uebf0"
-        grid: "\udb81\udf58"
-        monocle: "\uf06f"
-        maximized: "\uf06f"
-        floating: "\uf2d2"
-        paused: "\udb83\udf89"
+        bsp: "BSP"
+        columns: "COLS"
+        rows: "ROWS"
+        grid: "GRID"
+        vertical_stack: "V-STACK"
+        horizontal_stack: "H-STACK"
+        ultrawide_vertical_stack: "W-STACK"
+        right_main_vertical_stack: "RMV-STACK"
+        monocle: "MONOCLE"
+        maximized: "MAX"
+        floating: "FLOATING"
+        paused: "PAUSED"
       callbacks:
-        on_left: "toggle_layout_menu"
-        on_middle: "next_layout"
+        on_left: "next_layout"
+        on_middle: "toggle_monocle"
         on_right: "prev_layout"
-      layout_menu:
-        blur: true
-        round_corners: true
-        round_corners_type: "normal"
-        border_color: "System"
-        alignment: "left"
-        direction: "down"
-        offset_top: 6
-        offset_left: 0
-
-  taskbar:
-    type: "yasb.taskbar.TaskbarWidget"
-    options:
-      icon_size: 16
-      tooltip: true
-      show_only_visible: false
-      strict_filtering: true
-      monitor_exclusive: false
-      hide_empty: false
-      animation:
-        enabled: true
-        duration: 200
-      preview:
-        enabled: false
-        width: 240
-        delay: 400
-        padding: 8
-        margin: 8
-      title_label:
-        enabled: false
-        show: "focused"
-        min_length: 10
-        max_length: 30
-      ignore_apps:
-        processes: []
-        titles: []
-        classes: []
-      callbacks:
-        on_left: "toggle_window"
-        on_middle: "do_nothing"
-        on_right: "context_menu"
 
   clock:
     type: "yasb.clock.ClockWidget"
     options:
-      label: "{%a, %d %b %I:%M:%S}"
-      label_alt: "{%A, %d %B %Y %H:%M}"
+      label: "<span>\uf4ab</span> {%a, %d %b %I:%M:%S}"
+      label_alt: "<span>\uf4ab</span> {%A, %d %B %Y %H:%M}"
       timezones: ["America/New_York"]
       calendar:
         blur: true
@@ -260,8 +224,8 @@ widgets:
     type: "yasb.systray.SystrayWidget"
     options:
       class_name: "systray"
-      label_collapsed: "\ue70d"
-      label_expanded: "\ue70e"
+      label_collapsed: "\udb85\udcfc"
+      label_expanded: "\udb85\udcfb"
       label_position: "right"
       pin_click_modifier: "ctrl"
       show_unpinned: false
@@ -284,12 +248,12 @@ widgets:
   media_player:
     type: "yasb.media.MediaWidget"
     options:
-      label: "{title}"
-      label_alt: "{title} - {artist}"
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span>"
       separator: " - "
       max_field_size:
         label: 20
-        label_alt: 30
+        label_alt: 24
       show_thumbnail: false
       controls_only: true
       controls_left: false
@@ -311,7 +275,7 @@ widgets:
   open_meteo:
     type: "yasb.open_meteo.OpenMeteoWidget"
     options:
-      label: "<span>\ue706</span>{temp}"
+      label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
       tooltip: true
       update_interval: 600
@@ -335,7 +299,7 @@ widgets:
         hourly_icon_size: 16
         icon_smoothing: true
         temp_line_width: 2
-        current_line_color: "#8EAEE8"
+        current_line_color: "#9ccfd8"
         current_line_width: 1
         current_line_style: "dot"
         hourly_forecast_buttons:
@@ -351,8 +315,8 @@ widgets:
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
-      label: "<span>\ueea1</span> {info[percent][total]}%"
-      label_alt: "<span>\ueea1</span> {info[freq][current]} MHz"
+      label: "CPU {info[percent][total]}%"
+      label_alt: "CPU {info[freq][current]} MHz"
       update_interval: 2000
       menu:
         enabled: true
@@ -367,8 +331,8 @@ widgets:
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>\ueea1</span> {virtual_mem_percent}%"
-      label_alt: "<span>\ueea1</span> {virtual_mem_free} free"
+      label: "RAM {virtual_mem_percent}%"
+      label_alt: "RAM {virtual_mem_free} free"
       update_interval: 5000
       menu:
         enabled: true
@@ -383,14 +347,14 @@ widgets:
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
-      label: "<span>{icon}</span>"
+      label: "<span>{icon}</span> {level}"
       label_alt: "<span>{icon}</span> {level}%"
       icons:
-        muted: "\ue74f"
-        "10": "\ue992"
-        "30": "\ue992"
-        "60": "\ue993"
-        "100": "\ue994"
+        muted: "\ueee8"
+        "10": "\uf026"
+        "30": "\uf027"
+        "60": "\uf027"
+        "100": "\uf028"
       callbacks:
         on_left: "toggle_volume_menu"
         on_middle: "exec cmd.exe /c start ms-settings:sound"
@@ -426,7 +390,7 @@ widgets:
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
     options:
-      label: "<span>\ue712</span>"
+      label: "\uf011"
       uptime: true
       show_user: true
       menu_style: "popup"
@@ -442,9 +406,9 @@ widgets:
       profile_image_size: 64
       buttons:
         lock: ["\ue72e", "Lock"]
-        signout: ["\uf3b1", "Sign out"]
+        signout: ["\udb80\udf43", "Sign out"]
         sleep: ["\uec46", "Sleep"]
-        hibernate: ["\ue66d", "Hibernate"]
-        restart: ["\ue72c", "Restart"]
-        shutdown: ["\ue7e8", "Shut Down"]
-        cancel: ["", "Cancel"]
+        hibernate: ["\uf28e", "Hibernate"]
+        restart: ["\uead2", "Restart"]
+        shutdown: ["\uf011", "Shut Down"]
+        cancel: ["\udb81\udf3a", "Cancel"]

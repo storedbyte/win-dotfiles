@@ -14,7 +14,7 @@
     "monocle": "#24D190",
     "unfocused": "#3B3B3B"
   },
-  "border_style": "Rounded",
+  "border_style": "Square",
 
   // define monitors based on serial number
   "display_index_preferences": {
