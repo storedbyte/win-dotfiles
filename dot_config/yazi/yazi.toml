@@ -1,0 +1,6 @@
+[preview]
+wrap = "yes"
+
+[mgr]
+show_hidden = true
+ratio = [1, 2, 1]

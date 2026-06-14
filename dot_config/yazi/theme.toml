@@ -1,0 +1,11 @@
+[flavor]
+dark = ""
+light = ""
+
+[mgr]
+hovered = { fg = "black", bg = "#24D190" }
+
+[filetype]
+rules = [
+  { mime = "inode/directory", fg = "#24D190" },
+]

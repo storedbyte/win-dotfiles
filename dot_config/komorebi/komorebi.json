@@ -6,14 +6,15 @@
   "default_workspace_padding": 5,
   "default_container_padding": 5,
   "border": true,
-  "border_width": 2,
+  "border_width": 5,
   "border_offset": -1,
-  "theme": {
-    "palette": "Base16",
-    "name": "Ashes",
-    "unfocused_border": "Base03",
-    "bar_accent": "Base0D"
+  "border_colours": {
+    "single": "#24D190",
+    "stack": "#24D190",
+    "monocle": "#24D190",
+    "unfocused": "#3B3B3B"
   },
+  "border_style": "Rounded",
 
   // define monitors based on serial number
   "display_index_preferences": {
