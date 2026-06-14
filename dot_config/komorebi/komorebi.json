@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.41/schema.json",
+  "app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 5,
+  "default_container_padding": 5,
+  "border": true,
+  "border_width": 2,
+  "border_offset": -1,
+  "theme": {
+    "palette": "Base16",
+    "name": "Ashes",
+    "unfocused_border": "Base03",
+    "bar_accent": "Base0D"
+  },
+
+  // define monitors based on serial number
+  "display_index_preferences": {
+    // zowie monitor
+    "0": "BNQ7FB7-5&2e9b4d72&0&UID4355",
+    // acer predator ultrawide
+    "1": "ACR095E-5&2e9b4d72&0&UID4353",
+    // viotek monitor
+    "2": "VTK0238-5&2e9b4d72&0&UID4352"
+  },
+  "monitors": [
+    {
+      // monitor 0
+      "workspaces": [
+        { "name": "1", "layout": "BSP" },
+        { "name": "2", "layout": "BSP" },
+        { "name": "3", "layout": "BSP" },
+        { "name": "4", "layout": "BSP" },
+        { "name": "5", "layout": "BSP" },
+        { "name": "6", "layout": "BSP" },
+        { "name": "7", "layout": "BSP" },
+        { "name": "8", "layout": "BSP" }
+      ]
+    },
+    {
+      // monitor 1
+      "workspaces": [{ "name": "coms", "layout": "Columns" }]
+    },
+    {
+      // monitor 2
+      "workspaces": [{ "name": "misc", "layout": "BSP" }]
+    }
+  ]
+}
