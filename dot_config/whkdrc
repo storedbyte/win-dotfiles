@@ -78,4 +78,4 @@ alt + shift + 7         : komorebic move-to-workspace 6
 alt + shift + 8         : komorebic move-to-workspace 7
 
 alt + return            : Start-Process wt
-alt + e                 : Start-Process wt -ArgumentList "-- yazi"
+alt + e                 : Start-Process wt -ArgumentList "-- yazi" -WorkingDirectory $HOME
